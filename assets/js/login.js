@@ -53,10 +53,5 @@ $(function() {
                 alert(res.message)
             }
         })
-
-
-
     })
-
-
 })
