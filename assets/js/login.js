@@ -71,7 +71,7 @@ $(function() {
                 }
                 // 提示信息,保存token,跳转页面
                 layer.msg(res.msg)
-                    // 保存token,未来的借口要使用token
+                    // 保存token,未来的接口要使用token
                 localStorage.setItem('token', res.token)
                     // 跳转
                 location.href = "/index.html"
