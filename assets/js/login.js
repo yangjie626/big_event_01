@@ -4,14 +4,12 @@ $(function() {
     $('#link-reg').on('click', function() {
         $('.login-box').hide()
         $('.reg-box').show()
-    })
-
+    });
     // 点击去登录,隐藏注册区域,显示登录区域
     $('#link-login').on('click', function() {
         $('.login-box').show()
         $('.reg-box').hide()
     })
-
 
     // 2.自定义校验规则
     // 从layui中获取form对象,使用layui的效果---这一句没有,则后面代码不会生效
@@ -31,14 +29,14 @@ $(function() {
             }
         }
     });
-
-    // 监听注册表单的提交事件
+    var layer = layui.layer //从layui导入弹出层layer
+        // 监听注册表单的提交事件
     $('#form-reg').on('submit', function(e) {
         e.preventDefault()
             // 发起ajax的POST请求
         $.ajax({
             method: 'POST',
-            url: 'http://ajax.frontend.itheima.net/api/reguser',
+            url: '/api/reguser',
             data: {
                 username: $('.reg-box [name=username]').val(),
                 password: $('.reg-box [name=password]').val()
@@ -47,11 +45,41 @@ $(function() {
             success: function(res) {
                 // 返回状态判断
                 if (res.status !== 0) {
-                    return alert(res.message)
+                    return layer.msg(res.message)
                 }
                 // 提交成功后返回代码
-                alert(res.message)
+                layer.msg(res.message)
+                    // 切换登录模块
+                $('#link-login').click()
+                    // 清空注册表单,reset()方法是js原生方法,不是jQuery提供的
+                $('#form-reg')[0].reset()
+            }
+        })
+    });
+
+    // 监听登录表单
+    $('#form-login').on('submit', function(e) {
+        e.preventDefault()
+        $.ajax({
+            method: 'POST',
+            url: '/api/login',
+            data: $(this).serialize(),
+            success: function(res) {
+                // 校验返回状态
+                if (res.status !== 0) {
+                    return layer.msg(res.message)
+                }
+                // 提示信息,保存token,跳转页面
+                layer.msg(res.msg)
+                    // 保存token,未来的借口要使用token
+                localStorage.setItem('token', res.token)
+                    // 跳转
+                location.href = "/index.html"
             }
         })
     })
+
+
+
+
 })

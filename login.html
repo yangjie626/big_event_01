@@ -24,7 +24,7 @@
         <!-- 2.登陆模块 -->
         <div class="login-box">
             <!-- 登陆的表单 -->
-            <form class="layui-form" action="">
+            <form class="layui-form" id="form-login">
                 <!-- 2.1用户名 -->
                 <div class="layui-form-item">
                     <i class="layui-icon layui-icon-username"></i>
@@ -86,6 +86,8 @@
     <script src="/assets/lib/layui/layui.all.js"></script>
     <!--导入jQuery文件 -->
     <script src="/assets/lib/jquery.js"></script>
+    <!-- 导入baseAPI.js文件 要在jQuery.js之后,自己写的login.js之前-->
+    <script src="/assets/js/baseAPI.js"></script>
     <!-- 引入login.js 一定要写到最底端,因为会用到layui中的属性名 -->
     <script src="/assets/js/login.js"></script>
 </body>
