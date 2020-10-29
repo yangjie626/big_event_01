@@ -69,8 +69,9 @@ $(function() {
                 if (res.status !== 0) {
                     return layer.msg(res.message)
                 }
+
                 // 提示信息,保存token,跳转页面
-                layer.msg(res.msg)
+                layer.msg(res.message)
                     // 保存token,未来的接口要使用token
                 localStorage.setItem('token', res.token)
                     // 跳转
