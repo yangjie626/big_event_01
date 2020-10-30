@@ -21,7 +21,7 @@ $.ajaxPrefilter(function(option) {
             Authorization: localStorage.getItem('token') || ""
         }
     }
-    // 拦截所有相应,判断用户信息
+    // 登录拦截,判断用户信息
     // 无论成功与失败都会调用complete调用函数
     option.complete = function(res) {
         // console.log(res.responseJSON);

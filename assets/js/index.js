@@ -52,7 +52,7 @@ function renderAvatar(user) {
     if (user.user_pic !== null) {
         // 有头像,显示头像隐藏文字圆
         $('.text-avatar').hide();
-        $('.layui-nav-img').show().attr('src', 'user.user_pic')
+        $('.layui-nav-img').show().attr('src', user.user_pic)
 
     } else {
         // 没有头像
