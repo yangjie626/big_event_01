@@ -39,7 +39,7 @@ $(function() {
 
     })
 
-    // 4.图像上传
+    // 4.点击确定按钮,图像上传
     $('#btnUpload').on('click', function() {
         // 获取base64格式的图片(字符串)
         var dataURL = $image
@@ -49,7 +49,7 @@ $(function() {
                 height: 100
             })
             .toDataURL('image/png')
-        console.log(dataURL);
+            // console.log(dataURL);
         $.ajax({
             method: 'POST',
             url: '/my/update/avatar',
